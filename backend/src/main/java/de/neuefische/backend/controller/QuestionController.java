@@ -1,6 +1,6 @@
 package de.neuefische.backend.controller;
 import de.neuefische.backend.model.QuestionsCatalog;
-import de.neuefische.backend.service.TravelService;
+import de.neuefische.backend.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -8,12 +8,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/travel")
-public class TravelController {
+public class QuestionController {
 
-    private final TravelService service;
+    private final QuestionService service;
 
     @Autowired
-    public TravelController(TravelService service) {
+    public QuestionController(QuestionService service) {
         this.service = service;
     }
 

@@ -2,16 +2,16 @@ package de.neuefische.backend.service;
 import de.neuefische.backend.model.CountryPreference;
 import de.neuefische.backend.model.QuestionsCatalog;
 import de.neuefische.backend.model.WeatherPreference;
-import de.neuefische.backend.repo.TravelRepo;
+import de.neuefische.backend.repo.QuestionRepo;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class TravelServiceTest {
+class QuestionServiceTest {
 
-    private final TravelRepo repo = mock(TravelRepo.class);
-    private final TravelService service = new TravelService(repo);
+    private final QuestionRepo repo = mock(QuestionRepo.class);
+    private final QuestionService service = new QuestionService(repo);
 
     @Test
     void getAllAnswers() {
@@ -20,6 +20,7 @@ class TravelServiceTest {
         when(repo.findAll())
                 .thenReturn(List.of(
                         new QuestionsCatalog(CountryPreference.USA, WeatherPreference.SNOWY),
+                        new QuestionsCatalog(CountryPreference.SPAIN, WeatherPreference.RAINY),
                         new QuestionsCatalog(CountryPreference.GERMANY, WeatherPreference.SUNNY)));
         // WHEN
         List<QuestionsCatalog> actual = service.getAllAnswers();
@@ -27,6 +28,7 @@ class TravelServiceTest {
         // THEN
         List<QuestionsCatalog> expected = List.of(
                 new QuestionsCatalog(CountryPreference.USA, WeatherPreference.SNOWY),
+                new QuestionsCatalog(CountryPreference.SPAIN, WeatherPreference.RAINY),
                 new QuestionsCatalog(CountryPreference.GERMANY, WeatherPreference.SUNNY));
         verify(repo).findAll();
         assertEquals(expected, actual);
