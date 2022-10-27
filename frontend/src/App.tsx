@@ -1,36 +1,28 @@
-import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import axios from "axios";
+import {HashRouter, Route, Routes} from "react-router-dom";
+import QuestionsPage from "./pages/QuestionsPage";
+import MatchPage from "./pages/MatchPage";
+import useTravel from "./hooks/useTravel";
+import QuestionOverview from "./components/QuestionOverview";
 
 function App() {
 
+    const {answers, getAllAnswers, postAnswers} = useTravel();
 
-  const [helloMessage, setHelloMessage] = useState("");
+return (
 
-  useEffect( () => {
-    fetchHelloMessage()
-  }, [])
-
-  function fetchHelloMessage(){
-    axios.get("/api/hello")
-        .then(response => response.data)
-        .then(data => setHelloMessage(data))
-        .catch((error) => console.log(error))
-  }
-
-
-  return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {helloMessage}
-        </p>
+        <QuestionOverview questions={answers} getAllAnswers={getAllAnswers} postAnswers={postAnswers}/>
+        <HashRouter>
+          <Routes>
+            <Route path={"/"} element={<QuestionsPage/>}/>
+            <Route path={"/match"} element={<MatchPage/>}/>
+          </Routes>
+        </HashRouter>
 
-      </header>
     </div>
-  );
+
+  )
 }
 
 export default App;
