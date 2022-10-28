@@ -9,6 +9,7 @@ export default function QuestionsPage(){
 
     return(
         <div>
+            <NavLink to={"/login"}>zur Login Page</NavLink>
             <NavLink to={"/match"}>zur Match Page</NavLink>
             <h1>Question Page</h1>
             <QuestionOverview questions={answers} getAllAnswers={getAllAnswers} postAnswers={postAnswers}/>
