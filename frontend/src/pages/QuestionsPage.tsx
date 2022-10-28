@@ -5,13 +5,13 @@ import useTravel from "../hooks/useTravel";
 
 export default function QuestionsPage(){
 
-    const {answers, getAllAnswers, postAnswers} = useTravel();
+    const {postAnswers} = useTravel();
 
     return(
         <div>
             <NavLink to={"/match"}>zur Match Page</NavLink>
             <h1>Question Page</h1>
-            <QuestionOverview questions={answers} getAllAnswers={getAllAnswers} postAnswers={postAnswers}/>
+            <QuestionOverview  postAnswers={postAnswers}/>
         </div>
     )
 }

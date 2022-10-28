@@ -1,6 +1,6 @@
 package de.neuefische.backend.service;
 import de.neuefische.backend.model.QuestionsCatalog;
-import de.neuefische.backend.repo.TravelRepo;
+import de.neuefische.backend.repo.QuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,12 +8,12 @@ import java.util.List;
 
 
 @Service
-public class TravelService {
+public class QuestionService {
 
-    private final TravelRepo repo;
+    private final QuestionRepo repo;
 
     @Autowired
-    public TravelService(TravelRepo repo) {
+    public QuestionService(QuestionRepo repo) {
         this.repo = repo;
     }
 
