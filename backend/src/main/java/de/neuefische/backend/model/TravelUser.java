@@ -11,13 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document("capstone-travel-db")
+@Document("travelUser")
 public class TravelUser {
 
     @Id
-    private String id;
     private String username;
-    private String password;
+    private String passwordHash;
     private String email;
 
 }

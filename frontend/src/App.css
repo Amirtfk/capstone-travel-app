@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  align-items: center;
+  /*justify-content: center;*/
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #77C969 -2.48%, #358E79 86.44%, #294ABE 168.25%);
+  height: 100vh;
+  padding: 0;
 }
 
 .App-logo {

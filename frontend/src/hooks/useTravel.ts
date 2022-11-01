@@ -6,7 +6,7 @@ export default function useTravel() {
 
     const [answers, setAnswers] = useState([]);
 
-    useEffect( () => {
+    useEffect(() => {
         getAllAnswers()
     }, [])
 
@@ -18,13 +18,13 @@ export default function useTravel() {
     }
 
 
-    const postAnswers = (question: QuestionsCatalog) =>
+    const postAnswers = (question: QuestionsCatalog) => {
         axios.post("api/travel", question)
             .then(getAllAnswers)
+            .catch(() => console.error())
+    }
 
 
-    return (
+    return {answers, getAllAnswers, postAnswers}
 
-        {answers, getAllAnswers, postAnswers}
-    )
 }

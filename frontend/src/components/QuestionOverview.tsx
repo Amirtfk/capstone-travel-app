@@ -1,6 +1,6 @@
 import React, {FormEvent, useState} from "react";
 import {QuestionsCatalog} from "../model/QuestionsCatalog";
-
+import "./QuestionsCatalog.css"
 
 type QuestionOverviewProps = {
 
@@ -36,7 +36,7 @@ export default function QuestionOverview(props: QuestionOverviewProps) {
                 <h4>1- Which country would you like to go?</h4>
                 <select
                     onChange={(event) => setQuestionCountry(event.target.value)}
-
+                    className={"input-style"}
                     defaultValue={""}
                 >
                     <option value={""} disabled={true}>Select one answer</option>
@@ -51,6 +51,7 @@ export default function QuestionOverview(props: QuestionOverviewProps) {
                 <h4>2- Which weather do you prefer?</h4>
                 <select
                     onChange={(event) => setQuestionWeather(event.target.value)}
+                    className={"input-style"}
                     defaultValue={""}
                 >
                     <option value={""} disabled={true}>Select one answer</option>
@@ -62,7 +63,7 @@ export default function QuestionOverview(props: QuestionOverviewProps) {
 
             <br/>
             <br/>
-            <button type={"submit"}>Find your Buddy!</button>
+            <button className={"button-style-sp"} type={"submit"}>Find your Buddy!</button>
 
         </form>
     )
