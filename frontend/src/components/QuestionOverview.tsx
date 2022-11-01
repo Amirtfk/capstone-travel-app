@@ -1,45 +1,32 @@
-import React, {ChangeEvent, FormEvent, useState} from "react";
+import React, {FormEvent, useState} from "react";
 import {QuestionsCatalog} from "../model/QuestionsCatalog";
-
+import "./QuestionsCatalog.css"
 
 type QuestionOverviewProps = {
-    questions: QuestionsCatalog[];
-    getAllAnswers: () => void;
+
     postAnswers: (question: QuestionsCatalog) => void;
 
 }
 export default function QuestionOverview(props: QuestionOverviewProps) {
 
 
-    const emptyQuestionsCatalog: QuestionsCatalog = {
-        countryPreference: "",
-        weatherPreference: ""
-    }
-
-
-    const [questionsCatalog, setQuestionsCatalog] = useState(emptyQuestionsCatalog)
-
-    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-
-        const inputFieldValue = event.target.value;
-        console.log(inputFieldValue)
-        const inputFieldName = event.target.name;
-
-
-        setQuestionsCatalog(oldQuestionsCatalog => (
-            {
-                ...oldQuestionsCatalog,
-                [inputFieldName]: inputFieldValue
-            }
-        ))
-    }
+    const [questionCountry, setQuestionCountry] = useState("")
+    const [questionWeather, setQuestionWeather] = useState("")
 
 
     function submitButton(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        console.log("submit Button")
-        props.postAnswers(questionsCatalog)
+
+
+        console.log("Submit Button...")
+        props.postAnswers({
+            countryPreference: questionCountry,
+            weatherPreference: questionWeather
+        })
     }
+
+    console.log(questionCountry)
+    console.log(questionWeather)
 
 
     return (
@@ -48,9 +35,8 @@ export default function QuestionOverview(props: QuestionOverviewProps) {
             <label>
                 <h4>1- Which country would you like to go?</h4>
                 <select
-                    name={questionsCatalog.countryPreference}
-                    onChange={handleChange}
-                    value={questionsCatalog.countryPreference}
+                    onChange={(event) => setQuestionCountry(event.target.value)}
+                    className={"input-style"}
                     defaultValue={""}
                 >
                     <option value={""} disabled={true}>Select one answer</option>
@@ -64,9 +50,9 @@ export default function QuestionOverview(props: QuestionOverviewProps) {
             <label>
                 <h4>2- Which weather do you prefer?</h4>
                 <select
-                    name={questionsCatalog.weatherPreference}
-                    onChange={handleChange}
-                    value={questionsCatalog.weatherPreference}
+                    onChange={(event) => setQuestionWeather(event.target.value)}
+                    className={"input-style"}
+                    defaultValue={""}
                 >
                     <option value={""} disabled={true}>Select one answer</option>
                     <option value={"SUNNY"}>SUNNY</option>
@@ -77,7 +63,7 @@ export default function QuestionOverview(props: QuestionOverviewProps) {
 
             <br/>
             <br/>
-            <button type={"submit"}>Find your Buddy!</button>
+            <button className={"button-style-sp"} type={"submit"}>Find your Buddy!</button>
 
         </form>
     )

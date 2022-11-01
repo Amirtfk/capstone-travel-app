@@ -27,7 +27,6 @@ public class QuestionService {
 
 /*    public QuestionsCatalog postAnswers(QuestionsCatalog questionsCatalog) {
         questionsCatalog.setId(idService.generateId());
-
         return repo.save(movie);
     }*/
 }

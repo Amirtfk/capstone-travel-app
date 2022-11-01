@@ -1,24 +1,53 @@
 import React, {useState} from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
+import "./LoginPage.css"
 
 export default function LoginPage() {
 
-    const [welcomeMessage, setWelcomeMessage] = useState("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [me, setMe] = useState("")
 
-    function fetchWelcomeMessage () {
-        axios.get("/api/travel")
-            .then(response => {return response.data})
-            .then(data => setWelcomeMessage(data))
+    const navigate = useNavigate();
 
+
+    var loginSuccessful = false;
+    const handleLogin = async () => {
+
+        await axios.get("api/user/login", {auth: {username, password}})
+            .then((response) => {
+                setMe(response.data);
+                setUsername("");
+                setPassword("");
+                loginSuccessful = true;
+            }).catch(error => {
+                console.log(error);
+                alert("Sorry, Username or Password is wrong or Empty!")
+                loginSuccessful = false;
+            });
+
+        if (loginSuccessful) {
+            navigate("/question")
+        } else {
+        }
     }
 
+
+
     return (
-        <div>
-            <NavLink to={"/question"}>zur Question Page</NavLink>
+        <div className={"login-main"}>
+
             <h1>Login Page</h1>
-            <p>{welcomeMessage}</p>
-            <button onClick={fetchWelcomeMessage}>Say Hello!</button>
+
+            <h3>Login</h3>
+            <input className={"input-style"} placeholder={"Username ..."} value={username} onChange={event => setUsername(event.target.value)}/>
+            <input className={"input-style"} placeholder={"Password ..."} type={"password"} value={password} onChange={event => setPassword(event.target.value)}/>
+            <button className={"button-style"} onClick={handleLogin}>Login</button>
+            <NavLink to={"/register"}>or Sign Up?</NavLink>
+
         </div>
+
     )
 }
+

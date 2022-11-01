@@ -1,0 +1,10 @@
+.button-style-sp {
+    width: 130px;
+    padding: 7px;
+    border: 1px solid #202124;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: black;
+    cursor: pointer;
+    margin-bottom: 7px;
+}
