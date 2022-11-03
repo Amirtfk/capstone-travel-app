@@ -13,6 +13,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("capstone-travel-db")
 public class QuestionsCatalog {
 
+
+    private String username;
     private CountryPreference countryPreference;
     private WeatherPreference weatherPreference;
 

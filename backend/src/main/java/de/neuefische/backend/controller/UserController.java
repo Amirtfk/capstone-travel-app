@@ -29,12 +29,12 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public void logout(HttpSession session){
+    public void logout(HttpSession session) {
         session.invalidate();
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody CreateUserDto createUserDto){
+    public String register(@RequestBody CreateUserDto createUserDto) {
 
        String username = userService.register(createUserDto);
         return username;
