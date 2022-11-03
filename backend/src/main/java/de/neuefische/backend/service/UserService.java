@@ -24,12 +24,10 @@ public class UserService {
 
        String hashedPassword = passwordEncoder.encode(createUserDto.getPassword());
 
-
        TravelUser travelUser = new TravelUser();
        travelUser.setUsername(createUserDto.getUsername());
        travelUser.setPasswordHash(hashedPassword);
        travelUser.setEmail(createUserDto.getEmail());
-
 
        return travelUserRepo.save(travelUser).getUsername();
     }

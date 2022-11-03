@@ -18,15 +18,11 @@ public class QuestionService {
     }
 
     public List<QuestionsCatalog> getAllAnswers() {
-        return repo.findAll(); //konnte ich anstatt findall() > getAllAnswers schreiben?
+        return repo.findAll();
     }
 
-    public QuestionsCatalog postAnswers(QuestionsCatalog questionsCatalog) {
+    public QuestionsCatalog createQuestionCatalog (QuestionsCatalog questionsCatalog) {
         return repo.save(questionsCatalog);
     }
 
-/*    public QuestionsCatalog postAnswers(QuestionsCatalog questionsCatalog) {
-        questionsCatalog.setId(idService.generateId());
-        return repo.save(movie);
-    }*/
 }

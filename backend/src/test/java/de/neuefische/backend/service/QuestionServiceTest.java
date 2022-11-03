@@ -19,17 +19,17 @@ class QuestionServiceTest {
         // GIVEN
         when(repo.findAll())
                 .thenReturn(List.of(
-                        new QuestionsCatalog(CountryPreference.USA, WeatherPreference.SNOWY),
-                        new QuestionsCatalog(CountryPreference.SPAIN, WeatherPreference.RAINY),
-                        new QuestionsCatalog(CountryPreference.GERMANY, WeatherPreference.SUNNY)));
+                        new QuestionsCatalog( "sara", CountryPreference.USA, WeatherPreference.SNOWY),
+                        new QuestionsCatalog("amir", CountryPreference.SPAIN, WeatherPreference.RAINY),
+                        new QuestionsCatalog("david",CountryPreference.GERMANY, WeatherPreference.SUNNY)));
         // WHEN
         List<QuestionsCatalog> actual = service.getAllAnswers();
 
         // THEN
         List<QuestionsCatalog> expected = List.of(
-                new QuestionsCatalog(CountryPreference.USA, WeatherPreference.SNOWY),
-                new QuestionsCatalog(CountryPreference.SPAIN, WeatherPreference.RAINY),
-                new QuestionsCatalog(CountryPreference.GERMANY, WeatherPreference.SUNNY));
+                new QuestionsCatalog("sara", CountryPreference.USA, WeatherPreference.SNOWY),
+                new QuestionsCatalog("amir", CountryPreference.SPAIN, WeatherPreference.RAINY),
+                new QuestionsCatalog("david",CountryPreference.GERMANY, WeatherPreference.SUNNY));
         verify(repo).findAll();
         assertEquals(expected, actual);
 
@@ -39,11 +39,11 @@ class QuestionServiceTest {
     void postAnswers() {
 
         // GIVEN
-        QuestionsCatalog dummyQuestions = new QuestionsCatalog(CountryPreference.USA, WeatherPreference.SNOWY);
+        QuestionsCatalog dummyQuestions = new QuestionsCatalog("amir",CountryPreference.USA, WeatherPreference.SNOWY);
         when(repo.save(dummyQuestions)).thenReturn(dummyQuestions);
 
         // WHEN
-        QuestionsCatalog actual = service.postAnswers(dummyQuestions);
+        QuestionsCatalog actual = service.createQuestionCatalog(dummyQuestions);
 
         // THEN
         verify(repo).save(dummyQuestions);

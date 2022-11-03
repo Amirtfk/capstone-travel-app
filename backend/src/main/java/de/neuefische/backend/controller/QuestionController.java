@@ -1,5 +1,6 @@
 package de.neuefische.backend.controller;
 
+import de.neuefische.backend.model.QuestionCatalogDto;
 import de.neuefische.backend.model.QuestionsCatalog;
 import de.neuefische.backend.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +28,17 @@ public class QuestionController {
     }
 
     @PostMapping
-    public QuestionsCatalog postAnswer(@RequestBody QuestionsCatalog questionsCatalog) {
+    public QuestionsCatalog createQuestionCatalog(@RequestBody QuestionCatalogDto questionCatalogDto) {
         String username = SecurityContextHolder
                 .getContext()
                 .getAuthentication()
                 .getName();
+        QuestionsCatalog questionsCatalog = new QuestionsCatalog();
+        questionsCatalog.setCountryPreference(questionCatalogDto.getCountryPreference());
+        questionsCatalog.setWeatherPreference(questionCatalogDto.getWeatherPreference());
         questionsCatalog.setUsername(username);
-        return service.postAnswers(questionsCatalog);
 
+        return service.createQuestionCatalog(questionsCatalog);
     }
+
 }
