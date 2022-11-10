@@ -19,5 +19,6 @@ public class TravelUser {
     private String username;
     private String passwordHash;
     private String email;
+    private QuestionsCatalog questionsCatalog;
 
 }

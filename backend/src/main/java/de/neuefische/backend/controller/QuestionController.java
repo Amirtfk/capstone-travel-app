@@ -2,6 +2,7 @@ package de.neuefische.backend.controller;
 
 import de.neuefische.backend.model.QuestionCatalogDto;
 import de.neuefische.backend.model.QuestionsCatalog;
+import de.neuefische.backend.model.UserPreference;
 import de.neuefische.backend.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -40,5 +41,13 @@ public class QuestionController {
 
         return service.createQuestionCatalog(questionsCatalog);
     }
+
+
+    @PostMapping("/match")
+    public List<UserPreference> calcMatch (@RequestBody QuestionsCatalog questionsCatalog) {
+        return service.calcMatch(questionsCatalog);
+    }
+
+
 
 }
