@@ -29,8 +29,8 @@ public class UserController {
             SecurityContextHolder
                     .getContext()
                     .getAuthentication()
-                    .getName()
-    ).getUsername();
+                    .getName())
+            .getUsername();
     }
 
     @GetMapping("/logout")
