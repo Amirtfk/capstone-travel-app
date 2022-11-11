@@ -20,10 +20,9 @@ export default function QuestionsPage(props: QuestionspageProps){
 
     return(
         <div className={"question-main"}>
-            <p>Hello{props.me}</p>
+            <p className={"user-status-login"}>Hi {props.me}</p>
             <button className={"button-style"} onClick={handleLogout}>Logout</button>
 
-            <h1>Question Page</h1>
             <QuestionOverview postAnswers={props.postAnswers} postCalcMatches={props.postCalcMatches} me={props.me}/>
             <NavLink to={"/match"}>zur Match Page</NavLink>
         </div>

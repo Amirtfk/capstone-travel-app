@@ -25,7 +25,7 @@ return (
                 :
             <Route path={"/"} element={<QuestionsPage postAnswers={postAnswers} postCalcMatches={postCalcMatches} me={me} postUserAusgeloggt={postUserAusgeloggt} />}/>}
             <Route path={"/register"} element={<RegisterPage/>}/>
-            <Route path={"/match"} element={<MatchPage matchUser={matchUser} postUserAusgeloggt={postUserAusgeloggt}/>}/>
+            <Route path={"/match"} element={<MatchPage matchUser={matchUser} postUserAusgeloggt={postUserAusgeloggt} me={me}/>}/>
           </Routes>
         </HashRouter>
     </div>
