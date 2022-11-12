@@ -25,9 +25,10 @@ export default function MatchPage(props: MatchPageProps) {
 
     return (
         <div>
-            <NavLink to={"/"}>{!props.me ? "zum Login":"zur Question Page"}</NavLink>
-            <br/>
-            <button className={"button-style"} onClick={handleLogout}>Logout</button>
+            <div className={"user-status"}>
+                <NavLink to={"/"}>{!props.me ? "zum Login":"Question Page"}</NavLink>
+                <button onClick={handleLogout}>Logout</button>
+            </div>
             <h1>Match Page</h1>
 
             <div className={"progress-section"}>

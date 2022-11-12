@@ -1,3 +1,6 @@
+p {
+    margin: 0;
+}
 .question-main {
     text-align: center;
     align-items: center;
@@ -12,7 +15,7 @@
 }
 
 .input-style {
-    width: 270px!important;
+    width: 235px!important;
     padding: 15px;
     border: 2px solid #119a4f;
     border-radius: 10px;
@@ -23,8 +26,8 @@
 
 select.input-style {
     background-image:
-            linear-gradient(45deg, transparent 50%, gray 50%),
-            linear-gradient(135deg, gray 50%, transparent 50%),
+            linear-gradient(45deg, transparent 50%, #7191ae 50%),
+            linear-gradient(135deg, #7191ae 50%, transparent 50%),
             linear-gradient(to right, #ccc, #ccc);
     background-position:
             calc(100% - 20px) calc(1em + 7px),
@@ -39,8 +42,8 @@ select.input-style {
 
 select.input-style:focus {
     background-image:
-            linear-gradient(45deg, green 50%, transparent 50%),
-            linear-gradient(135deg, transparent 50%, green 50%),
+            linear-gradient(45deg, #77C969 50%, transparent 50%),
+            linear-gradient(135deg, transparent 50%, #77C969 50%),
             linear-gradient(to right, #ccc, #ccc);
     background-position:
             calc(100% - 15px) calc(1em + 7px),
@@ -53,4 +56,59 @@ select.input-style:focus {
     background-repeat: no-repeat;
     border-color: green;
     outline: 0;
+}
+
+.buddy-button--style {
+    width: 165px;
+    padding: 7px;
+    border: 1px solid;
+    border-color: transparent;
+    border-radius: 6px;
+    background-color: #26496a;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    transition-duration: 0.8s;
+    font-family: 'Jua', sans-serif;
+    text-transform: uppercase;
+}
+
+.buddy-button--style:hover {
+    transition-duration: 0.8s;
+    background-color: #fff;
+    color: #26496a;
+    width: 200px;
+    letter-spacing: 3px;
+}
+
+.user-status {
+    display: flex;
+    align-items: center;
+}
+
+.user-status p {
+    margin-right: 1px;
+    border-right: 1px solid;
+    padding-right: 10px;
+    border-color: #fff;
+    color: #25496b;
+    margin-top: 16px;
+}
+
+.user-status button {
+    background-color: transparent;
+    border-color: transparent;
+    font-family: 'Jua';
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-top: 16px;
+}
+
+.user-status button:hover {
+    color: #25496b;
 }

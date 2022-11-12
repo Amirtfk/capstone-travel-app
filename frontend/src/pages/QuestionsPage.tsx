@@ -1,4 +1,3 @@
-import {NavLink} from "react-router-dom";
 import QuestionOverview from "../components/QuestionOverview";
 import React from "react";
 import "./QuestionsPage.css";
@@ -20,11 +19,13 @@ export default function QuestionsPage(props: QuestionspageProps){
 
     return(
         <div className={"question-main"}>
-            <p className={"user-status-login"}>Hi {props.me}</p>
-            <button className={"button-style"} onClick={handleLogout}>Logout</button>
+            <div className={"user-status"}>
+                <p className={"user-status-login"}>Hi {props.me} !</p>
+                <button onClick={handleLogout}>Logout</button>
+            </div>
+            <h2 className={"font-link-first-ver"}>Answer this questions!</h2>
 
             <QuestionOverview postAnswers={props.postAnswers} postCalcMatches={props.postCalcMatches} me={props.me}/>
-            <NavLink to={"/match"}>zur Match Page</NavLink>
         </div>
     )
 }
