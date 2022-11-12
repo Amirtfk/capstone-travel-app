@@ -1,53 +1,34 @@
-import React, {useState} from "react";
-import {NavLink, useNavigate} from "react-router-dom";
-import axios from "axios";
+import React, {Dispatch, SetStateAction, useState} from "react";
+import {NavLink} from "react-router-dom";
 import "./LoginPage.css"
 
-export default function LoginPage() {
+type LoginPageProps ={
+    setMe : Dispatch<SetStateAction<string>>
+    postUserEingeloggt : (username:string, password:string) => void
+}
+
+export default function LoginPage(props: LoginPageProps) {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [me, setMe] = useState("")
-
-    const navigate = useNavigate();
 
 
-    var loginSuccessful = false;
     const handleLogin = async () => {
-
-        await axios.get("api/user/login", {auth: {username, password}})
-            .then((response) => {
-                setMe(response.data);
-                setUsername("");
-                setPassword("");
-                loginSuccessful = true;
-            }).catch(error => {
-                console.log(error);
-                alert("Sorry, Username or Password is wrong or Empty!")
-                loginSuccessful = false;
-            });
-
-        if (loginSuccessful) {
-            navigate("/question")
-        } else {
-        }
+        await props.postUserEingeloggt(username, password)
     }
-
-
 
     return (
         <div className={"login-main"}>
 
-            <h1>Login Page{me}</h1>
-
-            <h3>Login</h3>
+            <h3 className={"font-link-first-ver"}>Sign in</h3>
             <input className={"input-style"} placeholder={"Username ..."} value={username} onChange={event => setUsername(event.target.value)}/>
             <input className={"input-style"} placeholder={"Password ..."} type={"password"} value={password} onChange={event => setPassword(event.target.value)}/>
             <button className={"button-style"} onClick={handleLogin}>Login</button>
-            <NavLink to={"/register"}>or Sign Up?</NavLink>
+            <NavLink className={"reglog-link"} to={"/register"}>or Sign Up?</NavLink>
 
         </div>
 
     )
+
 }
 

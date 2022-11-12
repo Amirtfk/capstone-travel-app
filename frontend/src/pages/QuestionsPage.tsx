@@ -1,42 +1,29 @@
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import QuestionOverview from "../components/QuestionOverview";
-import useTravel from "../hooks/useTravel";
-import React, {useState} from "react";
-import axios from "axios";
-import "./QuestionsPage.css"
+import React from "react";
+import "./QuestionsPage.css";
+import {QuestionsCatalog} from "../model/QuestionsCatalog";
 
 
-export default function QuestionsPage(){
+type QuestionspageProps = {
+    postAnswers : (question: QuestionsCatalog) => void
+    postCalcMatches : (question: QuestionsCatalog) => void
+    postUserAusgeloggt : () => void
+    me : string
+}
 
-    const {postAnswers} = useTravel();
-    const [me, setMe] = useState("")
+export default function QuestionsPage(props: QuestionspageProps){
 
-    const navigate = useNavigate();
-
-
-    var logoutSuccessful = false;
-    const handleLogout = async () => {
-    await axios.get("api/user/logout")
-        .then((response) => {
-            setMe(response.data);
-            logoutSuccessful = true;
-        }).catch(error => {console.log(error);
-            logoutSuccessful = false;
-        });
-
-        if (logoutSuccessful) {
-            navigate("/")
-        } else {
-        }
+    function handleLogout () {
+       props.postUserAusgeloggt()
     }
 
     return(
         <div className={"question-main"}>
-            <p>Hello {me}</p>
+            <p className={"user-status-login"}>Hi {props.me}</p>
             <button className={"button-style"} onClick={handleLogout}>Logout</button>
 
-            <h1>Question Page</h1>
-            <QuestionOverview postAnswers={postAnswers}/>
+            <QuestionOverview postAnswers={props.postAnswers} postCalcMatches={props.postCalcMatches} me={props.me}/>
             <NavLink to={"/match"}>zur Match Page</NavLink>
         </div>
     )

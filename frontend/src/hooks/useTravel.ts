@@ -2,9 +2,12 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {QuestionsCatalog} from "../model/QuestionsCatalog";
 
+
 export default function useTravel() {
 
     const [answers, setAnswers] = useState([]);
+    const [matchUser, setMatchUser] = useState([]);
+
 
     useEffect(() => {
         getAllAnswers()
@@ -24,7 +27,15 @@ export default function useTravel() {
             .catch(() => console.error())
     }
 
+    const postCalcMatches = (question: QuestionsCatalog) => {
+        axios.post("api/travel/match", question)
+            .then(response => response.data)
+            .then(data => setMatchUser(data))
+            .catch(() => console.error())
+    }
 
-    return {answers, getAllAnswers, postAnswers}
+
+
+    return {answers, getAllAnswers, postAnswers, postCalcMatches, matchUser}
 
 }

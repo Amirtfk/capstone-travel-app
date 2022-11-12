@@ -1,0 +1,14 @@
+.progress-section {
+    margin-top: 50px;
+}
+
+.barCompleted {
+    background-color: #314D67;
+    height: 20px;
+    width: 60%;
+    transition: width 1s ease-in-out 0s;
+    border-radius: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

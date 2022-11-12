@@ -1,28 +1,40 @@
 import React, {FormEvent, useState} from "react";
 import {QuestionsCatalog} from "../model/QuestionsCatalog";
-import "./QuestionsCatalog.css"
+import "../model/QuestionsCatalog.css"
+import {useNavigate} from "react-router-dom";
 
 type QuestionOverviewProps = {
 
-    postAnswers: (question: QuestionsCatalog) => void;
-
+    postAnswers: (question: QuestionsCatalog) => void
+    postCalcMatches: (question: QuestionsCatalog) => void
+    me: string
 }
-export default function QuestionOverview(props: QuestionOverviewProps) {
 
+export default function QuestionOverview(props: QuestionOverviewProps){
 
     const [questionCountry, setQuestionCountry] = useState("")
     const [questionWeather, setQuestionWeather] = useState("")
+
+    const navigate = useNavigate();
 
 
     function submitButton(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
-
         console.log("Submit Button...")
         props.postAnswers({
+            username:  props.me,
             countryPreference: questionCountry,
             weatherPreference: questionWeather
         })
+        props.postCalcMatches( {
+            username: props.me,
+            countryPreference: questionCountry,
+            weatherPreference: questionWeather
+        })
+
+        navigate("/match")
+
     }
 
     console.log(questionCountry)
