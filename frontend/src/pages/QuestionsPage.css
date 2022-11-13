@@ -85,6 +85,7 @@ select.input-style:focus {
 .user-status {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .user-status p {
@@ -99,7 +100,7 @@ select.input-style:focus {
 .user-status button {
     background-color: transparent;
     border-color: transparent;
-    font-family: 'Jua';
+    font-family: 'Jua', sans-serif;
     font-weight: 500;
     text-transform: uppercase;
     color: #fff;

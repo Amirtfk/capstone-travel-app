@@ -18,7 +18,7 @@ export default function MatchPage(props: MatchPageProps) {
 
     async function handleLogout () {
         props.postUserAusgeloggt()
-        Promise.resolve(1000).then(()=> navigate("/"))
+        Promise.resolve(1000).then(()=> navigate("/loqu"))
 
     }
 
@@ -26,15 +26,15 @@ export default function MatchPage(props: MatchPageProps) {
     return (
         <div>
             <div className={"user-status"}>
-                <NavLink to={"/"}>{!props.me ? "zum Login":"Question Page"}</NavLink>
+                <NavLink to={"/loqu"}>{!props.me ? "zum Login":"Back"}</NavLink>
                 <button onClick={handleLogout}>Logout</button>
             </div>
-            <h1>Match Page</h1>
+            <h2 className={"font-link-first-ver"}>it's time to<br/> pack you'r<br/>bag!</h2>
 
             <div className={"progress-section"}>
                 {props.matchUser.map((match) =>
                     <div>
-                        <p> {match.name} {match.email} </p>
+                        <p className={"match-user-style"}> {match.name} </p>
                         <ProgressBar
                         completed={match.perc}
                         animateOnRender
