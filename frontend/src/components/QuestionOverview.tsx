@@ -75,7 +75,7 @@ export default function QuestionOverview(props: QuestionOverviewProps){
 
             <br/>
             <br/>
-            <button className={"button-style-sp"} type={"submit"}>Find your Buddy!</button>
+            <button className={"button-style-sp buddy-button--style"} type={"submit"}>Find your Buddy!</button>
 
         </form>
     )

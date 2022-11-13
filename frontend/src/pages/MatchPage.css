@@ -1,5 +1,9 @@
 .progress-section {
-    margin-top: 50px;
+    margin-top: 35px;
+}
+
+.progress-section p {
+    margin: 15px 0px;
 }
 
 .barCompleted {
@@ -11,4 +15,38 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+
+.user-status a {
+    margin-right: 1px;
+    border-right: 1px solid;
+    padding-right: 10px;
+    border-color: #fff;
+    color: #25496b;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 16px;
+}
+
+.user-status button {
+    background-color: transparent;
+    border-color: transparent;
+    font-family: 'Jua', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-top: 16px;
+}
+.user-status button:hover {
+    color: #25496b;
+}
+
+.match-user-style {
+    font-family: 'Jua', sans-serif;
+    color:#25496b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }

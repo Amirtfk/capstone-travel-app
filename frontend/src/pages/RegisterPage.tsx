@@ -32,7 +32,7 @@ export default function RegisterPage() {
         <input className={"input-style"} placeholder={"Password ..."} type={"Password"} value={newPassword} onChange={event => setNewPassword(event.target.value)}/>
         <input className={"input-style"} placeholder={"E-mail ..."} value={email} onChange={event => setEmail(event.target.value)}/>
         <button className={"button-style"} onClick={handleRegister}>Sign Up</button>
-        <NavLink className={"reglog-link"} to={"/"}>Login?</NavLink>
+        <NavLink className={"reglog-link"} to={"/loqu"}>Login?</NavLink>
 
     </div>
 

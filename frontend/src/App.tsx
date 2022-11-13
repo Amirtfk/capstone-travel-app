@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import useTravel from "./hooks/useTravel";
 import useLogin from "./hooks/useLogin";
+import HomePage from "./pages/HomePage";
 
 
 function App() {
@@ -20,10 +21,11 @@ return (
     <div className="App">
         <HashRouter>
           <Routes>
+            <Route path={"/"} element={<HomePage/>}/>
             {!me ?
-            <Route path={"/"} element={<LoginPage setMe={setMe} postUserEingeloggt={postUserEingeloggt} />}/>
+            <Route path={"/loqu"} element={<LoginPage setMe={setMe} postUserEingeloggt={postUserEingeloggt} />}/>
                 :
-            <Route path={"/"} element={<QuestionsPage postAnswers={postAnswers} postCalcMatches={postCalcMatches} me={me} postUserAusgeloggt={postUserAusgeloggt} />}/>}
+            <Route path={"/loqu"} element={<QuestionsPage postAnswers={postAnswers} postCalcMatches={postCalcMatches} me={me} postUserAusgeloggt={postUserAusgeloggt} />}/>}
             <Route path={"/register"} element={<RegisterPage/>}/>
             <Route path={"/match"} element={<MatchPage matchUser={matchUser} postUserAusgeloggt={postUserAusgeloggt} me={me}/>}/>
           </Routes>

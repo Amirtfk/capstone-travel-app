@@ -9,6 +9,10 @@
   padding: 0;
 }
 
+h4 {
+  color: #14304b;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -50,6 +54,7 @@
   text-transform: uppercase;
   color: white;
   letter-spacing: 5px;
+  line-height: 35px;
 }
 
 .reglog-link {
