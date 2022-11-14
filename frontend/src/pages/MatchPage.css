@@ -1,5 +1,19 @@
+.match--main {
+    width: 100%;
+}
+
+.user-status-match {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #277251f7!important;
+    padding-bottom: 14px;
+    margin-bottom: 40px;
+}
+
 .progress-section {
     margin-top: 35px;
+    padding: 0px 50px;
 }
 
 .progress-section p {
@@ -17,18 +31,22 @@
     justify-content: flex-end;
 }
 
-.user-status a {
+
+.user-status-match a {
     margin-right: 1px;
     border-right: 1px solid;
     padding-right: 10px;
     border-color: #fff;
-    color: #25496b;
+    color: #fff;
     font-weight: 600;
     text-decoration: none;
     margin-top: 16px;
 }
+.user-status-match a:hover {
+    color: #97d595;
+}
 
-.user-status button {
+.user-status-match button {
     background-color: transparent;
     border-color: transparent;
     font-family: 'Jua', sans-serif;
@@ -40,11 +58,11 @@
     letter-spacing: 1px;
     margin-top: 16px;
 }
-.user-status button:hover {
-    color: #25496b;
+.user-status-match button:hover {
+    color: #97d595;
 }
 
-.match-user-style {
+.match-user-style-match {
     font-family: 'Jua', sans-serif;
     color:#25496b;
     text-transform: uppercase;

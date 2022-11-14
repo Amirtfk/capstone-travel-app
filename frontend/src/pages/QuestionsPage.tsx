@@ -2,6 +2,7 @@ import QuestionOverview from "../components/QuestionOverview";
 import React from "react";
 import "./QuestionsPage.css";
 import {QuestionsCatalog} from "../model/QuestionsCatalog";
+import 'animate.css';
 
 
 type QuestionspageProps = {
@@ -23,7 +24,7 @@ export default function QuestionsPage(props: QuestionspageProps){
                 <p className={"user-status-login"}>Hi {props.me} !</p>
                 <button onClick={handleLogout}>Logout</button>
             </div>
-            <h2 className={"font-link-first-ver"}>Answer this questions!</h2>
+            <h2 className={"font-link-first-ver animate__animated animate__fadeInDown"}>Answer this questions!</h2>
 
             <QuestionOverview postAnswers={props.postAnswers} postCalcMatches={props.postCalcMatches} me={props.me}/>
         </div>

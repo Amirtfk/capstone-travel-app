@@ -3,6 +3,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import "./MatchPage.css";
 import {TravelUser} from "../model/TravelUser";
 import React from "react";
+import 'animate.css';
 
 
 type MatchPageProps = {
@@ -24,17 +25,17 @@ export default function MatchPage(props: MatchPageProps) {
 
 
     return (
-        <div>
-            <div className={"user-status"}>
+        <div className={"match--main"}>
+            <div className={"user-status-match"}>
                 <NavLink to={"/loqu"}>{!props.me ? "zum Login":"Back"}</NavLink>
                 <button onClick={handleLogout}>Logout</button>
             </div>
-            <h2 className={"font-link-first-ver"}>it's time to<br/> pack you'r<br/>bag!</h2>
+            <h2 className={"font-link-first-ver animate__animated animate__fadeInDown"}>it's time to<br/> pack you'r<br/>bag!</h2>
 
             <div className={"progress-section"}>
                 {props.matchUser.map((match) =>
                     <div>
-                        <p className={"match-user-style"}> {match.name} </p>
+                        <p className={"match-user-style-match"}> {match.name} </p>
                         <ProgressBar
                         completed={match.perc}
                         animateOnRender
