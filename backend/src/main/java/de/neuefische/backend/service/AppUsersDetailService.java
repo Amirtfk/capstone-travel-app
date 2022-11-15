@@ -27,4 +27,14 @@ public class AppUsersDetailService implements UserDetailsService {
         }
         return new User(user.getUsername(), user.getPasswordHash(), Collections.emptyList());
     }
+
+    public String getEmailByUsername(String username){
+        TravelUser user = travelUserRepo.findById(username)
+                .orElse(null);
+        if (user == null) {
+            return null;
+        }
+        return user.getEmail();
+    }
+
 }

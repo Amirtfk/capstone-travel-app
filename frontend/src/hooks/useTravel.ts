@@ -7,6 +7,8 @@ export default function useTravel() {
 
     const [answers, setAnswers] = useState([]);
     const [matchUser, setMatchUser] = useState([]);
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
 
 
     useEffect(() => {
@@ -34,8 +36,15 @@ export default function useTravel() {
             .catch(() => console.error())
     }
 
+    const getEmail = (username: string) => {
+        axios.get("api/user/" + username)
+            .then(response => response.data)
+            .then(data => setEmail(data))
+            .catch(() => console.error())
+    }
 
 
-    return {answers, getAllAnswers, postAnswers, postCalcMatches, matchUser}
+
+    return {answers, getAllAnswers, postAnswers, postCalcMatches, getEmail, email, matchUser, setUsername, username}
 
 }
