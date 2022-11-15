@@ -43,4 +43,9 @@ public class UserController {
         return userService.register(createUserDto);
     }
 
+    @GetMapping(path = {"/{username}"})
+    public String getEmail(@PathVariable String username){
+        return appUsersDetailService.getEmailByUsername(username);
+    }
+
 }

@@ -55,4 +55,14 @@ class UserControllerTest {
                 .andExpect(content().string("user1"));
     }
 
+
+    @Test
+    void ShouldReturn_null_with_Logout () throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/logout"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(""));
+    }
+
+
+
 }
