@@ -1,0 +1,88 @@
+.user-profile-section {
+
+}
+
+.user-profile-section h2 {
+    font-size: 27px;
+    font-family: 'Jua', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 5px;
+    line-height: 35px;
+    margin-top: 66px!important;
+    margin-bottom: 10%;
+}
+
+.user_profile {
+    background-image: url("/public/User_Icon_1.png");
+    background-repeat: no-repeat;
+    width: 180px;
+    height: 180px;
+    background-size: 100%;
+    display: inline-block;
+    border-radius: 50%;
+    border: 8px solid #277251f7!important;
+}
+
+.profile-name {
+    font-family: 'Jua', sans-serif;
+    color:#25496b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.profile-name-show {
+    font-family: 'Jua', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 0px;
+    border: 2px solid #1f593f;
+    border-radius: 8px;
+    margin-top: 5px;
+    background-color: #2e765729;
+}
+
+.profile-email {
+    font-family: 'Jua', sans-serif;
+    color:#25496b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.profile-email-show {
+    font-family: 'Jua', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 0px;
+    border: 2px solid #1f593f;
+    border-radius: 8px;
+    margin-top: 5px;
+    background-color: #2e765729;
+}
+
+.user-profile-section button {
+    width: 95px;
+    padding: 7px;
+    border: 1px solid;
+    border-color: transparent;
+    border-radius: 6px;
+    background-color: #26496a;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    transition-duration: 0.8s;
+    font-family: 'Jua', sans-serif;
+    text-transform: uppercase;
+}
+.user-profile-section button:hover {
+    transition-duration: 0.8s;
+    background-color: #fff;
+    color: #26496a;
+    width: 120px;
+    letter-spacing: 3px;
+}

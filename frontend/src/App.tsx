@@ -29,7 +29,7 @@ return (
             <Route path={"/loqu"} element={<QuestionsPage postAnswers={postAnswers} postCalcMatches={postCalcMatches} me={me} postUserAusgeloggt={postUserAusgeloggt} />}/>}
             <Route path={"/register"} element={<RegisterPage/>}/>
             <Route path={"/match"} element={<MatchPage matchUser={matchUser} postUserAusgeloggt={postUserAusgeloggt} me={me} setUsername={setUsername}/>}/>
-              <Route path={"/detail"} element={<DetailPage email={email} getEmail={getEmail} username={username}/>}/>
+              <Route path={"/detail"} element={<DetailPage email={email} getEmail={getEmail} username={username} postUserAusgeloggt={postUserAusgeloggt} />}/>
           </Routes>
         </HashRouter>
     </div>

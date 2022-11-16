@@ -42,6 +42,13 @@
     text-decoration: none;
     margin-top: 16px;
 }
+
+.match-user--style{
+    margin-top: 15px;
+    margin-bottom: 7px;
+}
+
+
 .user-status-match a:hover {
     color: #97d595;
 }
