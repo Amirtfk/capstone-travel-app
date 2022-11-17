@@ -37,7 +37,9 @@ export default function MatchPage(props: MatchPageProps) {
             <div className={"progress-section"}>
                 {props.matchUser.map((match) =>
                     <div>
+                        <div className={"match-user--style"}>
                         <NavLink onClick={() => props.setUsername(match.name)} to={"/detail"} className={"match-user-style-match"}> {match.name} </NavLink>
+                        </div>
                         <ProgressBar
                         completed={match.perc}
                         animateOnRender

@@ -15,6 +15,9 @@ export default function LoginPage(props: LoginPageProps) {
 
     const handleLogin = async () => {
         await props.postUserEingeloggt(username, password)
+        if (!username || !password === null) {
+            alert("Username and Password is empty!!")
+        }
     }
 
     return (
