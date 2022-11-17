@@ -1,9 +1,6 @@
 package de.neuefische.backend.controller;
 
-import de.neuefische.backend.model.CountryPreference;
-import de.neuefische.backend.model.QuestionsCatalog;
-import de.neuefische.backend.model.TravelUser;
-import de.neuefische.backend.model.WeatherPreference;
+import de.neuefische.backend.model.*;
 import de.neuefische.backend.repo.TravelUserRepo;
 import de.neuefische.backend.service.AppUsersDetailService;
 import org.junit.jupiter.api.Test;
@@ -15,11 +12,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -44,7 +38,7 @@ class UserControllerTest {
     @Test
     @WithMockUser(username = "user1", password = "123")
     void ShouldReturn_user_When_Request_With_Login() throws Exception {
-        QuestionsCatalog dummyQCatalog = new QuestionsCatalog("user1", CountryPreference.GERMANY, WeatherPreference.SUNNY, new ArrayList<>());
+        QuestionsCatalog dummyQCatalog = new QuestionsCatalog("user1", CountryPreference.GERMANY, WeatherPreference.SUNNY, new UserPreference());
         TravelUser dummyTravelUser = new TravelUser("user1", "ajdhasdjasjg", "hasd@hd.com", dummyQCatalog);
 
         when(repo.findById(any())).thenReturn(Optional.of(dummyTravelUser));

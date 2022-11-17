@@ -13,7 +13,7 @@ export default function DetailPage(props: DetailPageProps) {
 
     useEffect(()=> {
         props.getEmail(props.username)
-    },[]);
+    },[props]);
 
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export default function DetailPage(props: DetailPageProps) {
     return (
 
         <div className={"user-profile-section"}>
-            <h2 className={"animate__animated animate__fadeInDown"}>Kontakt</h2>
+            <h2 className={"animate__animated animate__fadeInDown"}>Contact</h2>
             <image className={"user_profile"} />
             <p className={"profile-name"}> NAME </p>
             <p className={"profile-name-show"}>{props.username}</p>

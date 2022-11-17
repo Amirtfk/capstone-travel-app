@@ -39,6 +39,7 @@ select.input-style {
             5px 5px,
             0px 2.3em;
     background-repeat: no-repeat;
+    color: #25496a;
 }
 
 select.input-style:focus {
@@ -73,6 +74,7 @@ select.input-style:focus {
     transition-duration: 0.8s;
     font-family: 'Jua', sans-serif;
     text-transform: uppercase;
+    font-size: 15px;
 }
 
 .buddy-button--style:hover {
