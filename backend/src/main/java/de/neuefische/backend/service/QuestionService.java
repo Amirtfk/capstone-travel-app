@@ -1,12 +1,13 @@
 package de.neuefische.backend.service;
+import de.neuefische.backend.model.QuestionCatalogDto;
 import de.neuefische.backend.model.QuestionsCatalog;
 import de.neuefische.backend.model.UserPreference;
 import de.neuefische.backend.repo.QuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 
 @Service
@@ -24,15 +25,14 @@ public class QuestionService {
         return repo.findAll();
     }
 
-    public QuestionsCatalog createQuestionCatalog (QuestionsCatalog questionsCatalog) {
+    public QuestionsCatalog createQuestionCatalog (QuestionCatalogDto questionCatalogDto, String username) {
 
-        if (repo.existsById(questionsCatalog.getUsername())) {
-          QuestionsCatalog questionsCatalog1 =  repo.findById(questionsCatalog.getUsername())
-                  .orElseThrow(() -> new NoSuchElementException("No Element with Question ID"));
-          questionsCatalog1.setCountryPreference(questionsCatalog.getCountryPreference());
-          questionsCatalog1.setWeatherPreference(questionsCatalog.getWeatherPreference());
-            return repo.save(questionsCatalog1);
-        }
+        QuestionsCatalog questionsCatalog = QuestionsCatalog.builder()
+                .username(username)
+                .countryPreference(questionCatalogDto.getCountryPreference())
+                .weatherPreference(questionCatalogDto.getWeatherPreference())
+                .build();
+
         return repo.save(questionsCatalog);
     }
 

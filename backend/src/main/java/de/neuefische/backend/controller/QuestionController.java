@@ -7,7 +7,6 @@ import de.neuefische.backend.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -34,12 +33,7 @@ public class QuestionController {
                 .getContext()
                 .getAuthentication()
                 .getName();
-        QuestionsCatalog questionsCatalog = new QuestionsCatalog();
-        questionsCatalog.setCountryPreference(questionCatalogDto.getCountryPreference());
-        questionsCatalog.setWeatherPreference(questionCatalogDto.getWeatherPreference());
-        questionsCatalog.setUsername(username);
-
-        return service.createQuestionCatalog(questionsCatalog);
+        return service.createQuestionCatalog(questionCatalogDto, username);
     }
 
 
@@ -47,7 +41,6 @@ public class QuestionController {
     public List<UserPreference> calcMatch (@RequestBody QuestionsCatalog questionsCatalog) {
         return service.calcMatch(questionsCatalog);
     }
-
 
 
 }

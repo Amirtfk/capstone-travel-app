@@ -1,9 +1,7 @@
 package de.neuefische.backend.service;
-import de.neuefische.backend.model.CountryPreference;
-import de.neuefische.backend.model.QuestionsCatalog;
-import de.neuefische.backend.model.UserPreference;
-import de.neuefische.backend.model.WeatherPreference;
+import de.neuefische.backend.model.*;
 import de.neuefische.backend.repo.QuestionRepo;
+import de.neuefische.backend.repo.TravelUserRepo;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,29 +12,30 @@ class QuestionServiceTest {
     private final QuestionRepo repo = mock(QuestionRepo.class);
     private final QuestionService service = new QuestionService(repo);
 
+
     @Test
     void getAllAnswers() {
 
         // GIVEN
         when(repo.findAll())
                 .thenReturn(List.of(
-                        new QuestionsCatalog("sara", CountryPreference.USA, WeatherPreference.SNOWY, List.of(
-                                        new UserPreference("sara", 0))),
-                        new QuestionsCatalog("amir", CountryPreference.SPAIN, WeatherPreference.RAINY, List.of(
-                                        new UserPreference("amir", 50))),
-                        new QuestionsCatalog("david",CountryPreference.GERMANY, WeatherPreference.SUNNY, List.of(
-                                        new UserPreference("david", 75)))));
+                        new QuestionsCatalog("sara", CountryPreference.USA, WeatherPreference.SNOWY,
+                                        new UserPreference("sara", 0)),
+                        new QuestionsCatalog("amir", CountryPreference.SPAIN, WeatherPreference.RAINY,
+                                        new UserPreference("amir", 50)),
+                        new QuestionsCatalog("david",CountryPreference.GERMANY, WeatherPreference.SUNNY,
+                                        new UserPreference("david", 75))));
         // WHEN
         List<QuestionsCatalog> actual = service.getAllAnswers();
 
         // THEN
         List<QuestionsCatalog> expected = List.of(
-                new QuestionsCatalog("sara", CountryPreference.USA, WeatherPreference.SNOWY, List.of(
-                                new UserPreference("sara", 0))),
-                new QuestionsCatalog("amir", CountryPreference.SPAIN, WeatherPreference.RAINY, List.of(
-                                new UserPreference("amir", 50))),
-                new QuestionsCatalog("david",CountryPreference.GERMANY, WeatherPreference.SUNNY, List.of(
-                                new UserPreference("david", 75))));
+                new QuestionsCatalog("sara", CountryPreference.USA, WeatherPreference.SNOWY,
+                                new UserPreference("sara", 0)),
+                new QuestionsCatalog("amir", CountryPreference.SPAIN, WeatherPreference.RAINY,
+                                new UserPreference("amir", 50)),
+                new QuestionsCatalog("david",CountryPreference.GERMANY, WeatherPreference.SUNNY,
+                                new UserPreference("david", 75)));
         verify(repo).findAll();
         assertEquals(expected, actual);
 
@@ -46,16 +45,25 @@ class QuestionServiceTest {
     void postAnswers() {
 
         // GIVEN
-        QuestionsCatalog dummyQuestions = new QuestionsCatalog("amir",CountryPreference.USA, WeatherPreference.SNOWY, List.of(
-                        new UserPreference("amir", 50)));
-        when(repo.save(dummyQuestions)).thenReturn(dummyQuestions);
-
+        QuestionCatalogDto dummyQuestionDto = new QuestionCatalogDto(CountryPreference.USA, WeatherPreference.SNOWY);
+        String username ="amir";
+        when(repo.save(any())).thenReturn(QuestionsCatalog.builder()
+                .username("amir")
+                .countryPreference(dummyQuestionDto.getCountryPreference())
+                .weatherPreference(dummyQuestionDto.getWeatherPreference())
+                .userPreferences(new UserPreference("amir", 50))
+                .build());
         // WHEN
-        QuestionsCatalog actual = service.createQuestionCatalog(dummyQuestions);
+        QuestionsCatalog actual = service.createQuestionCatalog(dummyQuestionDto, username);
 
         // THEN
-        verify(repo).save(dummyQuestions);
-        assertEquals(dummyQuestions, actual);
+        QuestionsCatalog expected = QuestionsCatalog.builder()
+                .username("amir")
+                .countryPreference(dummyQuestionDto.getCountryPreference())
+                .weatherPreference(dummyQuestionDto.getWeatherPreference())
+                .userPreferences(new UserPreference("amir", 50))
+                .build();
+        assertEquals(expected, actual);
 
     }
 
@@ -63,17 +71,17 @@ class QuestionServiceTest {
     void calcMatch() {
 
         //GIVEN
-        QuestionsCatalog dummyQuestions1 = new QuestionsCatalog("amir",CountryPreference.USA, WeatherPreference.SNOWY, List.of(
-                        new UserPreference("amir", 0)));
-        QuestionsCatalog dummyQuestions2 = new QuestionsCatalog("joon",CountryPreference.GERMANY, WeatherPreference.RAINY, List.of(
-                        new UserPreference("joon", 50)));
-        QuestionsCatalog dummyQuestions3 = new QuestionsCatalog("leon",CountryPreference.SPAIN, WeatherPreference.SUNNY, List.of(
-                        new UserPreference("leon", 50)));
+        QuestionsCatalog dummyQuestions1 = new QuestionsCatalog("amir",CountryPreference.USA, WeatherPreference.SNOWY,
+                        new UserPreference("amir", 0));
+        QuestionsCatalog dummyQuestions2 = new QuestionsCatalog("joon",CountryPreference.GERMANY, WeatherPreference.RAINY,
+                        new UserPreference("joon", 50));
+        QuestionsCatalog dummyQuestions3 = new QuestionsCatalog("leon",CountryPreference.SPAIN, WeatherPreference.SUNNY,
+                        new UserPreference("leon", 50));
 
         when(repo.findAll()).thenReturn(List.of(dummyQuestions1, dummyQuestions2, dummyQuestions3));
 
-        QuestionsCatalog dummyQuestionUser = new QuestionsCatalog("marek", CountryPreference.GERMANY, WeatherPreference.SUNNY, List.of(
-                        new UserPreference("name", 0)));
+        QuestionsCatalog dummyQuestionUser = new QuestionsCatalog("marek", CountryPreference.GERMANY, WeatherPreference.SUNNY,
+                        new UserPreference("name", 0));
 
         //WHEN
         List<UserPreference> actual = service.calcMatch(dummyQuestionUser);
